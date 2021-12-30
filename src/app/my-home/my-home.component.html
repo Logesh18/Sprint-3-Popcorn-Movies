@@ -1,0 +1,42 @@
+<div id="bodyContainer">
+    <div id="headerContainer">    
+        <div class="navbar">
+            <a id="logo"><fa-icon id="tv" [icon]="tv"></fa-icon><b><span id="title">MY TV</span></b></a>
+            
+            <a id="homeBtn" routerLink = "home">Home</a>
+            <select id="filter" name="filter" [(ngModel)]="initial" (ngModelChange)="onChange($event)">
+                 <option *ngFor="let s of selectedvalue" [value]="s.id">{{s.value}}</option>
+    
+            </select>
+        </div>
+    </div>
+    <div id="movieContainer">
+        <div id="grid">
+            <div class="grid-container" *ngFor="let i of movies">
+                <a id="route-link" routerLink="{{i.link}}">
+                    <div class="card">
+                        <div id="title">
+                            <p><b>{{i.title}}</b><br><span id="release-date">Released : {{i.year}}</span></p>
+                        </div>
+                        <div id="movie-details">
+                            <div id="wrap">
+                                <img id="movie-image" src={{i.poster}} alt="movie-image" style="width:100%">
+                            </div>    
+                        </div>
+                        <div id="content-container">
+                            <span>
+                                <span id="votes"><fa-icon id="heart" [icon]="heart"></fa-icon>{{i.likes}}</span>
+                                <span id="likes"><fa-icon id="eye" [icon]="eye"></fa-icon>{{i.watched}}</span>
+                            </span>
+                            
+                        </div>
+                    </div>
+                </a>
+                
+            </div>
+           
+        </div>
+    </div>
+    
+</div>
+<router-outlet></router-outlet>
